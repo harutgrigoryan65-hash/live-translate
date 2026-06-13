@@ -318,15 +318,19 @@ async def capture_and_translate(
                 async for response in session.receive():
                     if should_stop():
                         break
-                    if response.server_content:
-                        if response.server_content.input_transcription:
-                            text = response.server_content.input_transcription.text
-                            if text:
-                                _call(on_input, text)
-                        if response.server_content.output_transcription:
-                            text = response.server_content.output_transcription.text
-                            if text:
-                                _call(on_output, text)
+
+                    content = getattr(response, "server_content", None) or response
+                    input_transcription = getattr(content, "input_transcription", None)
+                    output_transcription = getattr(content, "output_transcription", None)
+
+                    if input_transcription:
+                        text = getattr(input_transcription, "text", None)
+                        if text:
+                            _call(on_input, text)
+                    if output_transcription:
+                        text = getattr(output_transcription, "text", None)
+                        if text:
+                            _call(on_output, text)
 
             send_task = asyncio.create_task(send_audio())
             receive_task = asyncio.create_task(receive_translations())
