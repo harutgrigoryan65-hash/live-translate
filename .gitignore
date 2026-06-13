@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+settings.json
+knowledge_base.json
+window_audio_capture
+window_audio_capture.exe
+dist/
+build/

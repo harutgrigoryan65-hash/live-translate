@@ -1,0 +1,4 @@
+google-genai==2.8.0
+PyAudio==0.2.14
+numpy==2.4.6
+soundcard==0.4.5

@@ -1,0 +1,15 @@
+{
+  "api_key": "",
+  "model": "gemini-3.5-live-translate-preview",
+  "target_language_code": "ru",
+  "echo_target_language": false,
+  "answer_enabled": false,
+  "answer_model": "gemini-2.5-flash",
+  "answer_language": "ru",
+  "answer_prompt": "Answer naturally and confidently. Keep it concise. For interview questions, use first person and give a practical example when possible.",
+  "rag_enabled": true,
+  "embedding_model": "gemini-embedding-2",
+  "rag_min_similarity": 0.42,
+  "rag_top_k": 5,
+  "transcript_mode": "interview"
+}
